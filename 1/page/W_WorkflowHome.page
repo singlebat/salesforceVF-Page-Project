@@ -1,0 +1,488 @@
+<apex:page controller="W_WorkflowHomeController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>  
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            <script language="javascript">
+            function changeDis(flag){
+                if(flag=="1"){
+                    var tabValue1 = document.getElementById('tab1');
+                    tabValue1.classList.remove( "slds-hide" ) ;
+                    tabValue1.classList.add( "slds-show" ) ;
+                    var tabValue2 = document.getElementById('tab2');
+                    tabValue2.classList.remove( "slds-show" ) ;
+                    tabValue2.classList.add( "slds-hide" ) ;
+                    
+                    var li1= document.getElementById('li1');
+                    li1.classList.add( "slds-is-active" ) ;
+                    var li2= document.getElementById('li2');
+                    li2.classList.remove( "slds-is-active" ) ;
+                    
+                }else{
+                    var tabValue1 = document.getElementById('tab1');
+                    tabValue1.classList.remove( "slds-show" ) ;
+                    tabValue1.classList.add( "slds-hide" ) ;
+                    var tabValue2 = document.getElementById('tab2');
+                    tabValue2.classList.remove( "slds-hide" ) ;
+                    tabValue2.classList.add( "slds-show" ) ;
+                    
+                    var li1= document.getElementById('li1');
+                    li1.classList.remove( "slds-is-active" ) ;
+                    var li2= document.getElementById('li2');
+                    li2.classList.add( "slds-is-active" ) ;
+                }
+            }
+            function display(flag){
+                var disp1 = document.getElementById('disp1');
+                var disp2 = document.getElementById('disp2');
+                var disp4 = document.getElementById('disp4');
+                if(flag=="0"){
+                    disp1.classList.remove( "slds-hide" ) ;
+                    disp2.classList.remove( "slds-hide" ) ;
+                    disp4.classList.remove( "slds-hide" ) ;
+                    
+                    document.getElementById("link0").style["text-decoration"] = "underline";
+                    document.getElementById("link0").style["font-weight"] = "bold";
+                    document.getElementById("link1").style = "";
+                    document.getElementById("link2").style = "";
+                    document.getElementById("link4").style = "";                    
+                }
+                if(flag=="1"){
+                    disp1.classList.remove( "slds-hide" ) ;
+                    disp2.classList.add( "slds-hide" ) ;
+                    disp4.classList.add( "slds-hide" ) ;
+                    
+                    document.getElementById("link1").style["text-decoration"] = "underline";
+                    document.getElementById("link1").style["font-weight"] = "bold";
+                    document.getElementById("link0").style = "";
+                    document.getElementById("link2").style = "";
+                    document.getElementById("link4").style = "";
+                }
+                if(flag=="2"){
+                    disp1.classList.add( "slds-hide" ) ;
+                    disp2.classList.remove( "slds-hide" ) ;
+                    disp4.classList.add( "slds-hide" ) ;
+                    
+                    document.getElementById("link2").style["text-decoration"] = "underline";
+                    document.getElementById("link2").style["font-weight"] = "bold";
+                    document.getElementById("link0").style = "";
+                    document.getElementById("link1").style = "";
+                    document.getElementById("link4").style = "";
+                }
+                if(flag=="4"){
+                    disp1.classList.add( "slds-hide" ) ;
+                    disp2.classList.add( "slds-hide" ) ;
+                    disp4.classList.remove( "slds-hide" ) ;
+                    
+                    document.getElementById("link4").style["text-decoration"] = "underline";
+                    document.getElementById("link4").style["font-weight"] = "bold";
+                    document.getElementById("link0").style = "";
+                    document.getElementById("link1").style = "";
+                    document.getElementById("link2").style = "";
+                }
+            }
+            </script>
+        </head>
+        <body id="vf-body" style="background-color:rgb(176,196,223);">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-4" >
+                    <div class="slds-box" style="margin-top:20px;margin-left:10px;background-color:white">
+                        <p style="font-size:20px;font-weight: bold;">連絡事項</p>
+                        リッチテキスト
+                    </div>
+                    <div class="slds-box" style="margin-top:10px;margin-left:10px;background-color:white">
+                        <p style="font-size:20px;font-weight: bold;">業務メニューへのリンク</p>
+                        <ul class="slds-list--dotted">
+                            <li><a id="link0" onclick="display(0);">全業務</a></li>
+                            <li><a id="link1" onclick="display(1);">人事関連</a></li>
+                            <li><a id="link2" onclick="display(2);">総務関連</a></li>
+                            <li><a id="link4" onclick="display(4);">営業事務関連</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-4" style="margin-left:-10px;margin-top:20px;">
+                    <div class="slds-box" style="background-color:white">
+                        <table>
+                            <tr>
+                                <td width="60%">
+                                    <p style="font-size:20px;font-weight: bold;">業務メニュー一覧</p>
+                                </td>
+                                <td width="25%">
+                                    <a href="">各業務メニューの説明はこちら</a>
+                                </td>
+                                <td width="15%">
+                                    <a href="">システム選択へ戻る</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="disp1" style="margin-top:10px;">
+                            <p>●人事関連</p>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+ShiftDutySystemApplTable}/list">シフト勤務制度導入の申請</a>
+                                    </button>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+FlexWorkPlanApplTable}/list">フレックス勤務制度導入の申請</a>
+                                    </button>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+HomeWorkAppointedApplTable}/list">宅勤務特認の申請（週３回以上利用）</a>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="disp2" style="margin-top:20px;">
+                            <p>●総務関連</p>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+DonationApplicationTable}/list">寄付申請</a>
+                                    </button>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+PoliFoundPartyTicketPurchaseApplTable}/list">政治資金パーティ券購入申請</a>
+                                    </button>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+DuesApplicationTable}/list">会費申請</a>
+                                    </button>
+                                </li>   
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+LayoutChangeApplTable}/list">レイアウト変更申請</a>
+                                    </button>
+                                </li>      
+                            </ul>
+                        </div>
+                        <div id="disp4"  style="margin-top:20px;">
+                            <p>●営業事務関連</p>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+AppropriateAppointedAppTable}/list">計上特認申請</a>
+                                    </button>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+JoinAppFormPPDDownloadTable}/list">加入申込票システム印字データ提供依頼</a>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="slds-box" style="margin-top:10px;background-color:white"> 
+                        <div class="slds-tabs_default">
+                            <ul class="slds-tabs_default__nav" role="tablist">
+                                <li id="li1" class="slds-tabs_default__item slds-is-active" title="自分が対応の要対応一覧" role="presentation">
+                                    <a class="slds-tabs_default__link" onclick="changeDis(1);" role="tab" tabindex="0" aria-selected="false" aria-controls="tab1" id="tab1item">自分が対応の要対応一覧</a>
+                                </li>
+                                <li id="li2" class="slds-tabs_default__item" title="対応中のワークフロー一覧" role="presentation">
+                                    <a class="slds-tabs_default__link" onclick="changeDis(2);" role="tab" tabindex="-1" aria-selected="true" aria-controls="tab2" id="tab2item">対応中のワークフロー一覧</a>
+                                </li>
+                            </ul>
+                            <div id="tab1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+                                <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Name">申請部署</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-8" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Account Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Account Name">申請名</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-9" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Close Date" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Close Date">申請日</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-10" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Stage" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Stage">申請状況</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-11" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Stage" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Stage">承認者</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-11" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!dislist}" var="item">
+                                            <tr aria-selected="false" class="slds-hint-parent">
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseibu}">{!item.sinseibu}</div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseimei}">
+                                                        <a href="{!item.sinseiId}">{!item.sinseimei}</a>
+                                                    </div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseibi}">
+                                                        <apex:outputText value="{!item.sinseibi}" escape="false"/>
+                                                    </div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseistatus}">{!item.sinseistatus}</div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.admit}">{!item.admit}</div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="tab2" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
+                                <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th aria-label="Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Name">申請部署</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-8" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Account Name" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Account Name">申請名</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Account Name column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-9" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Close Date" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Close Date">申請日</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Close Date column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-10" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Stage" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Stage">申請状況</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-11" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <th aria-label="Stage" aria-sort="none" class="slds-is-resizable slds-is-sortable" scope="col">
+                                                <a class="slds-th__action slds-text-link_reset" href="javascript:void(0);" role="button" tabindex="0">
+                                                    <span class="slds-assistive-text">Sort by: </span>
+                                                    <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                                                        <span class="slds-truncate" title="Stage">承認者</span>
+                                                        <span class="slds-icon_container slds-icon-utility-arrowdown">
+                                                            <svg class="slds-icon slds-icon-text-default slds-is-sortable__icon " aria-hidden="true">
+                                                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                                <div class="slds-resizable">
+                                                    <input type="range" aria-label="Stage column width" class="slds-resizable__input slds-assistive-text" id="cell-resize-handle-11" max="1000" min="20" tabindex="0" />
+                                                    <span class="slds-resizable__handle">
+                                                        <span class="slds-resizable__divider"></span>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!dislist2}" var="item">
+                                            <tr aria-selected="false" class="slds-hint-parent">
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseibu}">{!item.sinseibu}</div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseimei}">
+                                                        <a href="{!item.sinseiId}">{!item.sinseimei}</a>
+                                                    </div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseibi}">
+                                                        <apex:outputText value="{!item.sinseibi}" escape="false"/>
+                                                    </div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="{!item.sinseistatus}">{!item.sinseistatus}</div>
+                                                </td>
+                                                <td role="gridcell">
+                                                    <div class="slds-truncate" title="">{!item.admit}</div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </body>
+    </html>
+</apex:page>
