@@ -35,43 +35,64 @@
             function display(flag){
                 var disp1 = document.getElementById('disp1');
                 var disp2 = document.getElementById('disp2');
+                var disp3 = document.getElementById('disp3');
                 var disp4 = document.getElementById('disp4');
                 if(flag=="0"){
                     disp1.classList.remove( "slds-hide" ) ;
                     disp2.classList.remove( "slds-hide" ) ;
+                    disp3.classList.remove( "slds-hide" ) ;
                     disp4.classList.remove( "slds-hide" ) ;
                     
                     document.getElementById("link0").style["text-decoration"] = "underline";
                     document.getElementById("link0").style["font-weight"] = "bold";
                     document.getElementById("link1").style = "";
                     document.getElementById("link2").style = "";
+                    document.getElementById("link3").style = "";
                     document.getElementById("link4").style = "";                    
                 }
                 if(flag=="1"){
                     disp1.classList.remove( "slds-hide" ) ;
                     disp2.classList.add( "slds-hide" ) ;
+                    disp3.classList.add( "slds-hide" ) ;
                     disp4.classList.add( "slds-hide" ) ;
                     
                     document.getElementById("link1").style["text-decoration"] = "underline";
                     document.getElementById("link1").style["font-weight"] = "bold";
                     document.getElementById("link0").style = "";
                     document.getElementById("link2").style = "";
+                    document.getElementById("link3").style = "";
                     document.getElementById("link4").style = "";
                 }
                 if(flag=="2"){
                     disp1.classList.add( "slds-hide" ) ;
                     disp2.classList.remove( "slds-hide" ) ;
+                    disp3.classList.add( "slds-hide" ) ;
                     disp4.classList.add( "slds-hide" ) ;
                     
                     document.getElementById("link2").style["text-decoration"] = "underline";
                     document.getElementById("link2").style["font-weight"] = "bold";
                     document.getElementById("link0").style = "";
                     document.getElementById("link1").style = "";
+                    document.getElementById("link3").style = "";
+                    document.getElementById("link4").style = "";
+                }
+                if(flag=="3"){
+                    disp1.classList.add( "slds-hide" ) ;
+                    disp2.classList.add( "slds-hide" ) ;
+                    disp3.classList.remove( "slds-hide" ) ;
+                    disp4.classList.add( "slds-hide" ) ;
+                    
+                    document.getElementById("link3").style["text-decoration"] = "underline";
+                    document.getElementById("link3").style["font-weight"] = "bold";
+                    document.getElementById("link0").style = "";
+                    document.getElementById("link1").style = "";
+                    document.getElementById("link2").style = "";
                     document.getElementById("link4").style = "";
                 }
                 if(flag=="4"){
                     disp1.classList.add( "slds-hide" ) ;
                     disp2.classList.add( "slds-hide" ) ;
+                    disp3.classList.add( "slds-hide" ) ;
                     disp4.classList.remove( "slds-hide" ) ;
                     
                     document.getElementById("link4").style["text-decoration"] = "underline";
@@ -79,6 +100,7 @@
                     document.getElementById("link0").style = "";
                     document.getElementById("link1").style = "";
                     document.getElementById("link2").style = "";
+                    document.getElementById("link3").style = "";
                 }
             }
             </script>
@@ -86,9 +108,11 @@
         <body id="vf-body" style="background-color:rgb(176,196,223);">
             <div class="slds-grid slds-gutters">
                 <div class="slds-col slds-size_1-of-4" >
-                    <div class="slds-box" style="margin-top:20px;margin-left:10px;background-color:white">
-                        <p style="font-size:20px;font-weight: bold;">連絡事項</p>
-                        リッチテキスト
+                    <div class="slds-box" style="margin-top:20px;margin-left:10px;background-color:white;">
+                        	<p style="font-size:20px;font-weight: bold;">連絡事項</p>
+                        	<apex:form style="word-break: break-all;">
+                                <apex:outputField value="{!renraku.content__c}" style="word-break: break-word"/>
+                        	</apex:form>
                     </div>
                     <div class="slds-box" style="margin-top:10px;margin-left:10px;background-color:white">
                         <p style="font-size:20px;font-weight: bold;">業務メニューへのリンク</p>
@@ -96,6 +120,7 @@
                             <li><a id="link0" onclick="display(0);">全業務</a></li>
                             <li><a id="link1" onclick="display(1);">人事関連</a></li>
                             <li><a id="link2" onclick="display(2);">総務関連</a></li>
+                            <li><a id="link3" onclick="display(3);">商品関連</a></li>
                             <li><a id="link4" onclick="display(4);">営業事務関連</a></li>
                         </ul>
                     </div>
@@ -108,10 +133,10 @@
                                     <p style="font-size:20px;font-weight: bold;">業務メニュー一覧</p>
                                 </td>
                                 <td width="25%">
-                                    <a href="">各業務メニューの説明はこちら</a>
+                                    <a href="{!URLFOR($Resource.W_ContentHelp, 'W_ContentHelp/ContentHelp.html')}" target="_blank">各業務メニューの説明はこちら</a>
                                 </td>
                                 <td width="15%">
-                                    <a href="">システム選択へ戻る</a>
+                                    <a href="/lightning/n/C_HomeTab">システム選択へ戻る</a>
                                 </td>
                             </tr>
                         </table>
@@ -186,6 +211,29 @@
                                         </svg><a href="{!baseUrl+LayoutChangeApplTable}/list">レイアウト変更申請</a>
                                     </button>
                                 </li>      
+                            </ul>
+                        </div>
+                        <div id="disp3" style="margin-top:20px;">
+                            <p>●商品関連</p>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+UndwriApprNumRecordMissSurvey}/list">引受承認番号記入漏れ調査</a>
+                                    </button>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg><a href="{!baseUrl+BatchRevisionAppl}/list">一括訂正</a>
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                         <div id="disp4"  style="margin-top:20px;">
@@ -324,6 +372,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <apex:outputPanel rendered="{!if(dislist==null,false,true)}" layout="none" id="detailpanel"> 
                                         <apex:repeat value="{!dislist}" var="item">
                                             <tr aria-selected="false" class="slds-hint-parent">
                                                 <td role="gridcell">
@@ -347,6 +396,7 @@
                                                 </td>
                                             </tr>
                                         </apex:repeat>
+                                        </apex:outputPanel>
                                     </tbody>
                                 </table>
                             </div>
@@ -452,6 +502,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <apex:outputPanel rendered="{!if(dislist2==null,false,true)}" layout="none" id="detailpanel2"> 
                                         <apex:repeat value="{!dislist2}" var="item">
                                             <tr aria-selected="false" class="slds-hint-parent">
                                                 <td role="gridcell">
@@ -475,6 +526,7 @@
                                                 </td>
                                             </tr>
                                         </apex:repeat>
+                                        </apex:outputPanel>
                                     </tbody>
                                 </table>
                             </div>
