@@ -37,70 +37,60 @@
                 var disp2 = document.getElementById('disp2');
                 var disp3 = document.getElementById('disp3');
                 var disp4 = document.getElementById('disp4');
+                var disp5 = document.getElementById('disp5');
+                
+                document.getElementById("link0").style = "";
+                document.getElementById("link1").style = "";
+                document.getElementById("link2").style = "";
+                document.getElementById("link3").style = "";
+                document.getElementById("link4").style = "";                     
+                document.getElementById("link5").style = ""; 
+                
+                disp1.classList.add( "slds-hide" ) ;
+                disp2.classList.add( "slds-hide" ) ;
+                disp3.classList.add( "slds-hide" ) ;
+                disp4.classList.add( "slds-hide" ) ;
+                disp5.classList.add( "slds-hide" ) ;
+                
                 if(flag=="0"){
                     disp1.classList.remove( "slds-hide" ) ;
                     disp2.classList.remove( "slds-hide" ) ;
                     disp3.classList.remove( "slds-hide" ) ;
                     disp4.classList.remove( "slds-hide" ) ;
+                    disp5.classList.remove( "slds-hide" ) ;
                     
                     document.getElementById("link0").style["text-decoration"] = "underline";
-                    document.getElementById("link0").style["font-weight"] = "bold";
-                    document.getElementById("link1").style = "";
-                    document.getElementById("link2").style = "";
-                    document.getElementById("link3").style = "";
-                    document.getElementById("link4").style = "";                    
+                    document.getElementById("link0").style["font-weight"] = "bold";                  
                 }
                 if(flag=="1"){
                     disp1.classList.remove( "slds-hide" ) ;
-                    disp2.classList.add( "slds-hide" ) ;
-                    disp3.classList.add( "slds-hide" ) ;
-                    disp4.classList.add( "slds-hide" ) ;
                     
                     document.getElementById("link1").style["text-decoration"] = "underline";
                     document.getElementById("link1").style["font-weight"] = "bold";
-                    document.getElementById("link0").style = "";
-                    document.getElementById("link2").style = "";
-                    document.getElementById("link3").style = "";
-                    document.getElementById("link4").style = "";
                 }
                 if(flag=="2"){
-                    disp1.classList.add( "slds-hide" ) ;
                     disp2.classList.remove( "slds-hide" ) ;
-                    disp3.classList.add( "slds-hide" ) ;
-                    disp4.classList.add( "slds-hide" ) ;
                     
                     document.getElementById("link2").style["text-decoration"] = "underline";
                     document.getElementById("link2").style["font-weight"] = "bold";
-                    document.getElementById("link0").style = "";
-                    document.getElementById("link1").style = "";
-                    document.getElementById("link3").style = "";
-                    document.getElementById("link4").style = "";
                 }
                 if(flag=="3"){
-                    disp1.classList.add( "slds-hide" ) ;
-                    disp2.classList.add( "slds-hide" ) ;
                     disp3.classList.remove( "slds-hide" ) ;
-                    disp4.classList.add( "slds-hide" ) ;
                     
                     document.getElementById("link3").style["text-decoration"] = "underline";
                     document.getElementById("link3").style["font-weight"] = "bold";
-                    document.getElementById("link0").style = "";
-                    document.getElementById("link1").style = "";
-                    document.getElementById("link2").style = "";
-                    document.getElementById("link4").style = "";
                 }
                 if(flag=="4"){
-                    disp1.classList.add( "slds-hide" ) ;
-                    disp2.classList.add( "slds-hide" ) ;
-                    disp3.classList.add( "slds-hide" ) ;
                     disp4.classList.remove( "slds-hide" ) ;
                     
                     document.getElementById("link4").style["text-decoration"] = "underline";
                     document.getElementById("link4").style["font-weight"] = "bold";
-                    document.getElementById("link0").style = "";
-                    document.getElementById("link1").style = "";
-                    document.getElementById("link2").style = "";
-                    document.getElementById("link3").style = "";
+                }
+                if(flag=="5"){
+                    disp5.classList.remove( "slds-hide" ) ;
+                    
+                    document.getElementById("link5").style["text-decoration"] = "underline";
+                    document.getElementById("link5").style["font-weight"] = "bold";
                 }
             }
             </script>
@@ -109,10 +99,10 @@
             <div class="slds-grid slds-gutters">
                 <div class="slds-col slds-size_1-of-4" >
                     <div class="slds-box" style="margin-top:20px;margin-left:10px;background-color:white;">
-                        	<p style="font-size:20px;font-weight: bold;">連絡事項</p>
-                        	<apex:form style="word-break: break-all;">
+                            <p style="font-size:20px;font-weight: bold;">連絡事項</p>
+                            <apex:form style="word-break: break-all;">
                                 <apex:outputField value="{!renraku.content__c}" style="word-break: break-word"/>
-                        	</apex:form>
+                            </apex:form>
                     </div>
                     <div class="slds-box" style="margin-top:10px;margin-left:10px;background-color:white">
                         <p style="font-size:20px;font-weight: bold;">業務メニューへのリンク</p>
@@ -122,6 +112,7 @@
                             <li><a id="link2" onclick="display(2);">総務関連</a></li>
                             <li><a id="link3" onclick="display(3);">商品関連</a></li>
                             <li><a id="link4" onclick="display(4);">営業事務関連</a></li>
+                            <li><a id="link5" onclick="display(5);">共通</a></li>
                         </ul>
                     </div>
                 </div>
@@ -144,31 +135,31 @@
                             <p>●人事関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+ShiftDutySystemApplTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+ShiftDutySystemApplTable}/list">シフト勤務制度導入の申請</a>
-                                    </button>
+                                        </svg>シフト勤務制度導入の申請
+                                    </a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+FlexWorkPlanApplTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+FlexWorkPlanApplTable}/list">フレックス勤務制度導入の申請</a>
-                                    </button>
+                                        </svg>フレックス勤務制度導入の申請
+                                    </a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+HomeWorkAppointedApplTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+HomeWorkAppointedApplTable}/list">宅勤務特認の申請（週３回以上利用）</a>
-                                    </button>
+                                        </svg>在宅勤務特認の申請（週３回以上利用）
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -176,63 +167,65 @@
                             <p>●総務関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+DonationApplicationTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+DonationApplicationTable}/list">寄付申請</a>
-                                    </button>
+                                        </svg>寄付申請
+                                    </a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+PoliFoundPartyTicketPurchaseApplTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+PoliFoundPartyTicketPurchaseApplTable}/list">政治資金パーティ券購入申請</a>
-                                    </button>
+                                        </svg>政治資金パーティ券購入申請
+                                    </a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+DuesApplicationTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+DuesApplicationTable}/list">会費申請</a>
-                                    </button>
+                                        </svg>会費申請
+                                    </a>
                                 </li>   
+                                <!--2019/07/04スコープアウト
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+LayoutChangeApplTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+LayoutChangeApplTable}/list">レイアウト変更申請</a>
-                                    </button>
-                                </li>      
+                                        </svg>レイアウト変更申請
+                                    </a>
+                                </li>
+                            　　-->      
                             </ul>
                         </div>
                         <div id="disp3" style="margin-top:20px;">
                             <p>●商品関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+UndwriApprNumRecordMissSurvey}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+UndwriApprNumRecordMissSurvey}/list">引受承認番号記入漏れ調査</a>
-                                    </button>
+                                        </svg>引受承認番号記入漏れ調査
+                                    </a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+BatchRevisionAppl}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+BatchRevisionAppl}/list">一括訂正</a>
-                                    </button>
+                                        </svg>一括訂正
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -240,22 +233,36 @@
                             <p>●営業事務関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+AppropriateAppointedAppTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+AppropriateAppointedAppTable}/list">計上特認申請</a>
-                                    </button>
+                                        </svg>計上特認申請
+                                    </a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <button class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+JoinAppFormPPDDownloadTable}/list">
                                         <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
                                              class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
                                             <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
                                             </use>
-                                        </svg><a href="{!baseUrl+JoinAppFormPPDDownloadTable}/list">加入申込票システム印字データ提供依頼</a>
-                                    </button>
+                                        </svg>加入申込票システム印字データ提供依頼
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="disp5"  style="margin-top:20px;">
+                            <p>●共通</p>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+'Report/home?queryScope=userFolders'}">
+                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
+                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
+                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
+                                            </use>
+                                        </svg>レポート
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -263,8 +270,8 @@
                     <div class="slds-box" style="margin-top:10px;background-color:white"> 
                         <div class="slds-tabs_default">
                             <ul class="slds-tabs_default__nav" role="tablist">
-                                <li id="li1" class="slds-tabs_default__item slds-is-active" title="自分が対応の要対応一覧" role="presentation">
-                                    <a class="slds-tabs_default__link" onclick="changeDis(1);" role="tab" tabindex="0" aria-selected="false" aria-controls="tab1" id="tab1item">自分が対応の要対応一覧</a>
+                                <li id="li1" class="slds-tabs_default__item slds-is-active" title="自分が担当の要対応一覧" role="presentation">
+                                    <a class="slds-tabs_default__link" onclick="changeDis(1);" role="tab" tabindex="0" aria-selected="false" aria-controls="tab1" id="tab1item">自分が担当の要対応一覧</a>
                                 </li>
                                 <li id="li2" class="slds-tabs_default__item" title="対応中のワークフロー一覧" role="presentation">
                                     <a class="slds-tabs_default__link" onclick="changeDis(2);" role="tab" tabindex="-1" aria-selected="true" aria-controls="tab2" id="tab2item">対応中のワークフロー一覧</a>
@@ -522,7 +529,7 @@
                                                     <div class="slds-truncate" title="{!item.sinseistatus}">{!item.sinseistatus}</div>
                                                 </td>
                                                 <td role="gridcell">
-                                                    <div class="slds-truncate" title="">{!item.admit}</div>
+                                                    <div class="slds-truncate" title=""><apex:outputText value="{!item.admit}" escape="false"/></div>
                                                 </td>
                                             </tr>
                                         </apex:repeat>
