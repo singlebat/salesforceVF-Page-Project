@@ -120,8 +120,15 @@
                     <div class="slds-box" style="background-color:white">
                         <table>
                             <tr>
-                                <td width="60%">
+                                <td width="30%">
                                     <p style="font-size:20px;font-weight: bold;">業務メニュー一覧</p>
+                                </td>
+                                <td width="20%">
+                                    <div class="slds-box slds-box_xx-small" style="text-align:center;color: rgba(27, 82, 151, 1);box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" >
+                                       <apex:image url="{!$Resource.W_WorkflowAgent}" width="50" height="50"/>&nbsp;&nbsp;:代理店連携する業務
+                                    </div>
+                                </td>
+                                <td width="5%">
                                 </td>
                                 <td width="25%">
                                     <a href="{!URLFOR($Resource.W_ContentHelp, 'W_ContentHelp/ContentHelp.html')}" target="_blank">各業務メニューの説明はこちら</a>
@@ -135,31 +142,13 @@
                             <p>●人事関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+ShiftDutySystemApplTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>シフト勤務制度導入の申請
-                                    </a>
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+ShiftDutySystemApplTable}/list">シフト勤務制導入の申請</a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+FlexWorkPlanApplTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>フレックス勤務制度導入の申請
-                                    </a>
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+FlexWorkPlanApplTable}/list">フレックスタイム制導入の申請</a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+HomeWorkAppointedApplTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>在宅勤務特認の申請（週３回以上利用）
-                                    </a>
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+HomeWorkAppointedApplTable}/list">在宅勤務制度特認の申請（対象外社員区分、週2回超の利用）</a>
                                 </li>
                             </ul>
                         </div>
@@ -167,31 +156,13 @@
                             <p>●総務関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+DonationApplicationTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>寄付申請
-                                    </a>
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+DonationApplicationTable}/list">寄付申請</a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+PoliFoundPartyTicketPurchaseApplTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>政治資金パーティ券購入申請
-                                    </a>
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+PoliFoundPartyTicketPurchaseApplTable}/list">政治資金パーティ券購入申請</a>
                                 </li>
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+DuesApplicationTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>会費申請
-                                    </a>
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+DuesApplicationTable}/list">会費申請</a>
                                 </li>   
                                 <!--2019/07/04スコープアウト
                                 <li class="slds-button-group-item">
@@ -210,22 +181,13 @@
                             <p>●商品関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+UndwriApprNumRecordMissSurvey}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>引受承認番号記入漏れ調査
-                                    </a>
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+UndwriApprNumRecordMissSurvey}/list">引受承認番号記入漏れ調査</a>
                                 </li>
+                                <!-- 一括訂正オブジェクトに参照権限があるプロファイルのみボタンを表示 -->
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+BatchRevisionAppl}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>一括訂正
-                                    </a>
+                                    <apex:outputPanel rendered="{!$ObjectType.BatchRevisionAppl__c.accessible}">
+                                        <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+BatchRevisionAppl}/list">一括訂正</a>
+                                    </apex:outputPanel>
                                 </li>
                             </ul>
                         </div>
@@ -233,21 +195,45 @@
                             <p>●営業事務関連</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        宛先不明契約の調査（保険証券、解除通知　等）
+                                        <apex:image url="{!$Resource.W_WorkflowAgent}" width="50" height="50"/>
+                                    </a>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+                                        宛先不明契約の調査（年一回お知らせ、控除証明書）
+                                        <apex:image url="{!$Resource.W_WorkflowAgent}" width="50" height="50"/>
+                                    </a>
+                                </li>
+                            </ul>
+                            <br/>
+                            <br/>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+PolicySectionDeliveryMngTable}/list">
+                                        証券課支社送付（契約者非直送）
+                                        <apex:image url="{!$Resource.W_WorkflowAgent}" width="50" height="50"/>
+                                    </a>
+                                </li>
+                                <li class="slds-button-group-item">
+                                    <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+UnpaidRefundActivityMgmtTable}/list">
+                                        積立保険未払い返れい金管理
+                                        <apex:image style="margin-left:8px;" url="{!$Resource.W_WorkflowAgent}" width="50" height="50"/>
+                                    </a>
+                                </li>
+                            </ul>
+                            <br/>
+                            <br/>
+                            <ul class="slds-button-group-row">
+                                <li class="slds-button-group-item">
                                     <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+AppropriateAppointedAppTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>計上特認申請
+                                        計上特認申請
                                     </a>
                                 </li>
                                 <li class="slds-button-group-item">
                                     <a class="slds-button slds-button_neutral " style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+JoinAppFormPPDDownloadTable}/list">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>加入申込票システム印字データ提供依頼
+                                        加入申込票システム印字データ提供依頼
                                     </a>
                                 </li>
                             </ul>
@@ -256,13 +242,7 @@
                             <p>●共通</p>
                             <ul class="slds-button-group-row">
                                 <li class="slds-button-group-item">
-                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+'Report/home?queryScope=userFolders'}">
-                                        <svg lightning-primitiveIcon_primitiveIcon="" focusable="false" data-key="view_relationship" aria-hidden="true" 
-                                             class="slds-icon_container_circle slds-icon-action-view-relationship slds-icon_container slds-icon_small slds-button__icon_left">
-                                            <use lightning-primitiveIcon_primitiveIcon="" xlink:href="/_slds/icons/action-sprite/svg/symbols.svg?cache=9.26.0#view_relationship">
-                                            </use>
-                                        </svg>レポート
-                                    </a>
+                                    <a class="slds-button slds-button_neutral" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.40)" href="{!baseUrl+'Report/home?queryScope=userFolders'}">レポート</a>
                                 </li>
                             </ul>
                         </div>
